@@ -42,7 +42,7 @@ final class ViewController: UITableViewController {
         if let cell = tableView.cellForRow(at: indexPath) {
             if cell.accessoryType == .none {
                 cell.accessoryType = .checkmark
-            }else {
+            } else {
                 cell.accessoryType = .none
             }
         }
@@ -64,7 +64,7 @@ final class ViewController: UITableViewController {
             textField.placeholder = "What do you want to do next"
         }
         ac.addAction(UIAlertAction(title: "Add", style: .default, handler: { [weak self] _ in
-            if let fieldText = ac.textFields?[0].text, fieldText.isEmpty == false {
+            if let fieldText = ac.textFields?[0].text, fieldText.isNotEmpty {
                 self?.items.insert(fieldText, at: 0)
                 self?.searchData = self?.items ?? [""]
                 self?.tableView.reloadData()
@@ -95,6 +95,4 @@ extension ViewController: UISearchBarDelegate {
         })
         tableView.reloadData()
     }
-    
-    
 }
